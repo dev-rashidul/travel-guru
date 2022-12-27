@@ -1,0 +1,9 @@
+.hero-img {
+  float: right;
+}
+
+@media (min-width: 300px) and (max-width: 767px) {
+  .hero-content {
+    text-align: center;
+  }
+}
