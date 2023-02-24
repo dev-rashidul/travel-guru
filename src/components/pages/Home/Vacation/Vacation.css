@@ -1,0 +1,54 @@
+.vacation-wrapper {
+  padding-top: 100px;
+}
+
+.section-top {
+  max-width: 600px;
+  margin: auto;
+  text-align: center;
+}
+
+.section-top h2 {
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 54px;
+  color: #222222;
+}
+
+.section-top h2 span {
+  color: #fa7436;
+}
+
+.vacation-shape {
+  position: absolute;
+  top: 0;
+  right: -110px;
+}
+
+/* Responsive CSS */
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .section-top h2 {
+    font-size: 40px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .section-top h2 {
+    font-size: 36px;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 767px) {
+  .section-top h2 {
+    font-size: 30px;
+  }
+
+  .vacation-shape {
+    right: -10px;
+  }
+
+  .vacation-shape img {
+    max-width: 70%;
+  }
+}

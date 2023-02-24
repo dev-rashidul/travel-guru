@@ -10,8 +10,8 @@ const Header = () => {
         <nav className="navbar navbar-expand-xl">
           <div className="container">
             <Link to='/' className="logo">
-                TravelGuru
-             <Image src={logo}></Image>
+                <span>Travel</span>Guru
+             <Image draggable="false" src={logo}></Image>
             </Link>
             <button
               className="navbar-toggler collapsed m-0"

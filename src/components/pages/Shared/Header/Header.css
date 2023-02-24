@@ -3,10 +3,14 @@ nav.navbar {
 }
 
 a.logo {
-  font-size: 25px;
+  font-size: 28px;
   font-weight: 700;
   text-decoration: none;
   color: #000000;
+}
+
+a.logo span {
+  color: #fa7436;
 }
 
 a.logo img {
