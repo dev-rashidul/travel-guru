@@ -1,0 +1,13 @@
+.step-card {
+  background: #ffffff;
+  padding: 40px;
+  box-shadow: 14px 24px 72px rgba(102, 102, 102, 0.1);
+  border-radius: 8px;
+}
+
+.step-card h4 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #222222;
+  padding-top: 30px;
+}
