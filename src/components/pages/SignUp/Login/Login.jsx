@@ -1,13 +1,13 @@
 import { GoogleAuthProvider } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import {
-    Button,
-    Col,
-    Container,
-    FloatingLabel,
-    Form,
-    Image,
-    Row
+  Button,
+  Col,
+  Container,
+  FloatingLabel,
+  Form,
+  Image,
+  Row
 } from "react-bootstrap";
 import { Helmet } from "react-helmet-async";
 import { FaGoogle } from "react-icons/fa";
@@ -19,6 +19,9 @@ import SpinnerSmall from "../../../Spinners/SpinnerSmall";
 const Login = () => {
   // Checkbox State
   const [checked, setChecked] = useState(false);
+
+  // Error State
+  const [error, setError] = useState("");
 
   // Get Register Firebase auth using Context
   const { userLogin, googleLogin, loading, setLoading } =
@@ -39,6 +42,8 @@ const Login = () => {
       })
       .catch((error) => {
         console.error(error);
+        setError(error.message);
+        setLoading(false);
       });
   };
 
@@ -49,18 +54,25 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
 
-    userLogin(email, password).then((result) => {
-      const user = result.user;
-      console.log(user);
-      form.reset();
-      setLoading(false);
-    });
+    userLogin(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        form.reset();
+        setLoading(false);
+      })
+
+      .catch((error) => {
+        console.error(error);
+        setError(error.message);
+        setLoading(false);
+      });
   };
 
   return (
     <>
       <Helmet>
-        <title> Travel Guru - Register</title>
+        <title> Travel Guru - Login</title>
       </Helmet>
       <div className="register">
         <div className="register-wrapper">
@@ -104,6 +116,9 @@ const Login = () => {
                           label="Accept Terms and Conditions"
                         />
                       </Form.Group>
+                      <span className="text-danger text-start m-0">
+                        {error}
+                      </span>
                       <Button
                         className="submit-btn"
                         type="submit"

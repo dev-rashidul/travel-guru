@@ -24,6 +24,9 @@ const AuthProvider = ({ children }) => {
   // Loading State
   const [loading, setLoading] = useState(true);
 
+  // Role State
+  const [role, setRole] = useState(null);
+
   // Login With Google
   const googleLogin = (googleProvider) => {
     setLoading(true);
@@ -44,20 +47,19 @@ const AuthProvider = ({ children }) => {
 
   // Update User Profile
   const updateUserProfile = (name, image) => {
-    setLoading(true)
-    return updateProfile (auth.currentUser, {
+    setLoading(true);
+    return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: image,
     });
   };
-
 
   // Logout Function
   const logOut = () => {
     setLoading(true);
     return signOut(auth);
   };
- 
+
   // User Observer
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -66,6 +68,14 @@ const AuthProvider = ({ children }) => {
     });
     return () => unsubscribe();
   }, []);
+
+  // Get Role
+  useEffect(() => {
+    fetch (`https://travel-server-steel.vercel.app/user/${user?.email}`)
+    .then (res => res.json())
+    .then (data => setRole(data.role))
+    .catch (error => console.log(error))
+  }, [user]);
 
   // AuthInfo Object
   const authInfo = {
@@ -76,6 +86,7 @@ const AuthProvider = ({ children }) => {
     googleLogin,
     userLogin,
     updateUserProfile,
+    role,
     logOut,
   };
 

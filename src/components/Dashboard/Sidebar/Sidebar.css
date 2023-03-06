@@ -1,0 +1,78 @@
+.sidebar-wrapper {
+  min-height: 100vh;
+  max-height: 100%;
+  height: 100%;
+  background: #1f1f1f;
+  padding: 50px 20px 0;
+}
+
+.user-info img {
+  max-width: 150px;
+  width: 100%;
+  min-height: 150px;
+  max-height: 150px;
+  height: 100%;
+  object-fit: cover;
+  border: 5px solid #f16945;
+  border-radius: 100%;
+}
+
+.user-info h3 {
+  font-size: 25px;
+  font-weight: 700;
+  color: #ffffff;
+  padding-top: 20px;
+  margin: 0;
+}
+
+.user-info p {
+  color: #ffffffcb;
+}
+
+.sidebar-menu {
+  padding-top: 20px;
+}
+
+.sidebar-menu ul li {
+  list-style: none;
+}
+
+.sidebar-menu ul li svg {
+  font-size: 25px;
+  color: #ffffff;
+  margin-top: -8px;
+  margin-right: 10px;
+}
+
+.sidebar-menu ul li a {
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.logout {
+  position: absolute;
+  left: 50%;
+  bottom: 50px;
+  transform: translateX(-50%);
+}
+
+.logout span {
+  cursor: pointer;
+  background: #f16945;
+  color: #ffffff;
+  padding: 15px 40px;
+  border-radius: 10px;
+}
+
+.logout span svg {
+  font-size: 30px;
+  padding-right: 5px;
+}
+
+/* Responsive CSS */
+
+@media (min-width: 300px) and (max-width: 767px) {
+  .logout span {
+    padding: 15px 28px;
+  }
+}

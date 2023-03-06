@@ -18,15 +18,16 @@ import SpinnerSmall from "../../../Spinners/SpinnerSmall";
 import "./Register.css";
 
 const Register = () => {
-
   // Checkbox State
   const [checked, setChecked] = useState(false);
 
+  // Error State
+  const [error, setError] = useState("");
+
   // Get Register Firebase auth using Context
-  const { createUser, googleLogin, updateUserProfile, loading, setLoading } =
+  const { createUser, googleLogin, updateUserProfile, loading, setLoading, } =
     useContext(AuthContext);
 
-    
   // Function for Checkbox
   const handleChecked = (event) => {
     setChecked(event.target.checked);
@@ -42,6 +43,7 @@ const Register = () => {
       })
       .catch((error) => {
         console.error(error);
+        setError(error.message);
       });
   };
 
@@ -54,6 +56,7 @@ const Register = () => {
     const email = form.email.value;
     const image = form.image.files[0];
     const password = form.password.value;
+    const role = "user";
 
     // Image from ImgBB
 
@@ -72,12 +75,37 @@ const Register = () => {
           .then((result) => {
             const user = result.user;
             updateUserProfile(name, data.data.display_url);
+            saveUser(name, email, role);
             console.log(user);
             form.reset();
             setLoading(false);
           })
-          .catch((error) => console.error(error));
+          .catch((error) => {
+            console.error(error);
+            setError(error.message);
+            setLoading(false);
+          });
       });
+  };
+
+  const saveUser = (name, email, role) => {
+    const user = {
+      name,
+      email,
+      role,
+    };
+    fetch(`https://travel-server-steel.vercel.app/users`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -147,16 +175,22 @@ const Register = () => {
                           required
                         />
                       </FloatingLabel>
-                      <Form.Group
-                        controlId="formBasicCheckbox"
-                      >
-                        <Form.Check className="mt-4"
+                      <Form.Group controlId="formBasicCheckbox">
+                        <Form.Check
+                          className="mt-4"
                           onClick={handleChecked}
                           type="checkbox"
                           label="Accept Terms and Conditions"
                         />
                       </Form.Group>
-                      <Button className="submit-btn" type="submit" disabled={!checked}>
+                      <span className="text-danger text-start m-0">
+                        {error}
+                      </span>
+                      <Button
+                        className="submit-btn"
+                        type="submit"
+                        disabled={!checked}
+                      >
                         {loading ? <SpinnerSmall></SpinnerSmall> : "Register"}
                       </Button>
                       <Button

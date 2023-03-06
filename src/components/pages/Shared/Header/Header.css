@@ -71,6 +71,33 @@ a.sign-up:hover::before {
   bottom: 0;
 }
 
+.profile-picture {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.account {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  background: #ffffff;
+  box-shadow: 0px 0px 20px 10px #e7e7e7;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+.account ul li {
+  list-style: none;
+  padding: 5px 0;
+}
+
+.account ul li a {
+  color: #f16945;
+}
+
 .navbar-toggler {
   border: 0 !important;
   margin-top: -15px;
