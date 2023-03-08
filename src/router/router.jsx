@@ -8,6 +8,7 @@ import Login from "../components/pages/SignUp/Login/Login";
 import Register from "../components/pages/SignUp/Register/Register";
 import DashboardLyout from "../layout/DashboardLayout/DashboardLyout";
 import Main from "../layout/Main";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 // Get Role for Dashboard
 
@@ -36,19 +37,19 @@ const routes = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <DashboardLyout></DashboardLyout>,
+    element: <PrivateRoute><DashboardLyout></DashboardLyout></PrivateRoute>,
     children: [
       {
         path: '/dashboard',
-        element: <UserWelcome></UserWelcome>
+        element: <PrivateRoute><UserWelcome></UserWelcome></PrivateRoute>
       },
       {
         path: '/dashboard/all-users',
-        element: <AllUsers></AllUsers>
+        element: <PrivateRoute><AllUsers></AllUsers></PrivateRoute>
       },
       {
         path: '/dashboard/my-bookings',
-        element: <MyBookings></MyBookings>
+        element: <PrivateRoute><MyBookings></MyBookings></PrivateRoute>
       }
     ]
   }

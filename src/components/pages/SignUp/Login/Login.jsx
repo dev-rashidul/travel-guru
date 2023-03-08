@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import { Helmet } from "react-helmet-async";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../Context/AuthProvider/AuthProvider";
 import loginImg from "../../../../images/login-img.svg";
 import SpinnerSmall from "../../../Spinners/SpinnerSmall";
@@ -27,6 +27,11 @@ const Login = () => {
   const { userLogin, googleLogin, loading, setLoading } =
     useContext(AuthContext);
 
+  // Navigate and Location
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   // Function for Checkbox
   const handleChecked = (event) => {
     setChecked(event.target.checked);
@@ -38,6 +43,7 @@ const Login = () => {
     googleLogin(googleProvider)
       .then((result) => {
         const user = result.user;
+        navigate(from, { replace: true });
         console.log(user);
       })
       .catch((error) => {
@@ -60,6 +66,7 @@ const Login = () => {
         console.log(user);
         form.reset();
         setLoading(false);
+        navigate(from, { replace: true });
       })
 
       .catch((error) => {

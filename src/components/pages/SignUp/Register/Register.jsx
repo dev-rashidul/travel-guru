@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import { Helmet } from "react-helmet-async";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../Context/AuthProvider/AuthProvider";
 import register from "../../../../images/register-img.svg";
 import SpinnerSmall from "../../../Spinners/SpinnerSmall";
@@ -25,8 +25,13 @@ const Register = () => {
   const [error, setError] = useState("");
 
   // Get Register Firebase auth using Context
-  const { createUser, googleLogin, updateUserProfile, loading, setLoading, } =
+  const { createUser, googleLogin, updateUserProfile, loading, setLoading } =
     useContext(AuthContext);
+
+  // Navigate and Location
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   // Function for Checkbox
   const handleChecked = (event) => {
@@ -39,6 +44,7 @@ const Register = () => {
     googleLogin(googleProvider)
       .then((result) => {
         const user = result.user;
+        navigate(from, { replace: true });
         console.log(user);
       })
       .catch((error) => {
@@ -79,6 +85,7 @@ const Register = () => {
             console.log(user);
             form.reset();
             setLoading(false);
+            navigate(from, { replace: true });
           })
           .catch((error) => {
             console.error(error);
