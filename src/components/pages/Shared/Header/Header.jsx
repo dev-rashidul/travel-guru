@@ -13,9 +13,9 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   // Log Out Function
-  const logoutHandler = ()=>{
-    logOut()
-  }
+  const logoutHandler = () => {
+    logOut();
+  };
 
   return (
     <section id="Header">
@@ -50,11 +50,6 @@ const Header = () => {
                   Tours
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link to="/bookings" className="nav-link">
-                  Bookings
-                </Link>
-              </li>
             </ul>
             <div className="navbar-nav ml-auto">
               <div className="nav-buttons">
@@ -69,7 +64,7 @@ const Header = () => {
                       <div className="account">
                         <ul>
                           <li>
-                            <Link to='/dashboard'>Dashboard</Link>
+                            <Link to="/dashboard">Dashboard</Link>
                           </li>
                           <li>
                             <Link onClick={logoutHandler}>Log Out</Link>

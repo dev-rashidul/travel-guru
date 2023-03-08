@@ -1,9 +1,8 @@
 import React from "react";
 import { Col, Image } from "react-bootstrap";
-import './StepsCard.css';
+import "./StepsCard.css";
 
 const StepsCard = ({ step }) => {
-    console.log(step)
   // Destructure Step
 
   const { img, title, desc } = step;

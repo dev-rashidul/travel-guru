@@ -1,4 +1,5 @@
 import React from "react";
+import Discount from "./Discount/Discount";
 import Hero from "./Hero/Hero";
 import Newsletter from "./Newsletter/Newsletter";
 import Steps from "./Steps/Steps";
@@ -18,6 +19,12 @@ const Home = () => {
       <Steps></Steps>
 
       {/* Steps Section JSX End */}
+
+      {/* Discount Section JSX Start */}
+
+      <Discount></Discount>
+
+      {/* Discount Section JSX End */}
 
       {/* Vacation Section JSX Start */}
 
