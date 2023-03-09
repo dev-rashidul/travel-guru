@@ -1,9 +1,21 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { Container, Row } from "react-bootstrap";
-import './Discount.css';
+import "./Discount.css";
+import DiscountCard from "./DiscountCard/DiscountCard";
 
 const Discount = () => {
-  // Load Discoutns Data using React Query
+  // Discount State
+  const [discounts, setDiscounts] = useState([]);
+
+  // Load Discoutns Data using Axios
+  useEffect(() => {
+    axios
+      .get("https://travel-server-steel.vercel.app/discounts")
+      .then((res) => {
+        setDiscounts(res.data);
+      });
+  }, []);
 
   return (
     <section id="Discount">
@@ -18,7 +30,14 @@ const Discount = () => {
               your journey.
             </p>
           </div>
-          <Row className="justify-content-center"></Row>
+          <Row className="justify-content-center">
+            {discounts.map((discount) => (
+              <DiscountCard
+                key={discount._id}
+                discount={discount}
+              ></DiscountCard>
+            ))}
+          </Row>
         </Container>
       </div>
     </section>
