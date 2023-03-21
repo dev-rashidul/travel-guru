@@ -50,6 +50,13 @@ const Header = () => {
                   Tours
                 </Link>
               </li>
+              {user && (
+                <li className="nav-item">
+                  <Link to="/dashboard" className="nav-link">
+                    Dashboard
+                  </Link>
+                </li>
+              )}
             </ul>
             <div className="navbar-nav ml-auto">
               <div className="nav-buttons">
@@ -63,9 +70,6 @@ const Header = () => {
                     {isOpen && (
                       <div className="account">
                         <ul>
-                          <li>
-                            <Link to="/dashboard">Dashboard</Link>
-                          </li>
                           <li>
                             <Link onClick={logoutHandler}>Log Out</Link>
                           </li>

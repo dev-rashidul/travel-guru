@@ -80,6 +80,7 @@ a.sign-up:hover::before {
 }
 
 .account {
+  width: 110px;
   position: absolute;
   top: 60px;
   left: 0;

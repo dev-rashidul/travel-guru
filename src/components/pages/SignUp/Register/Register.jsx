@@ -12,6 +12,7 @@ import {
 import { Helmet } from "react-helmet-async";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 import { AuthContext } from "../../../../Context/AuthProvider/AuthProvider";
 import register from "../../../../images/register-img.svg";
 import SpinnerSmall from "../../../Spinners/SpinnerSmall";
@@ -85,11 +86,13 @@ const Register = () => {
             console.log(user);
             form.reset();
             setLoading(false);
+            swal("Good job!", "Registration Successful", "success");
             navigate(from, { replace: true });
           })
           .catch((error) => {
             console.error(error);
             setError(error.message);
+            swal("Bad Luck!", `${error.message}`, "error");
             setLoading(false);
           });
       });
@@ -117,6 +120,8 @@ const Register = () => {
 
   return (
     <>
+      {/* React Helmet for dynamic Title */}
+
       <Helmet>
         <title> Travel Guru - Register</title>
       </Helmet>

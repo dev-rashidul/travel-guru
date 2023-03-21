@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import Discount from "./Discount/Discount";
 import Hero from "./Hero/Hero";
 import Newsletter from "./Newsletter/Newsletter";
@@ -8,6 +9,12 @@ import Vacation from "./Vacation/Vacation";
 const Home = () => {
   return (
     <>
+      {/* React Helmet for dynamic Title */}
+
+      <Helmet>
+        <title> Travel Guru</title>
+      </Helmet>
+
       {/* Hero Section JSX Start */}
 
       <Hero></Hero>
@@ -37,7 +44,6 @@ const Home = () => {
       <Newsletter></Newsletter>
 
       {/* Newsletter Section JSX End */}
-      
     </>
   );
 };

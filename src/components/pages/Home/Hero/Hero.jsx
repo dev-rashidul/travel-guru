@@ -15,7 +15,7 @@ const Hero = () => {
               <div className="hero-content">
                 <h1>Travel, enjoy and live a new and full life</h1>
                 <p>A Team of experienced tourism professionals will provide you with the best advice and tips for your desire place. </p>
-                <Link to='/' className="d-block mt-4"><PrimaryButton>Explore Now</PrimaryButton></Link>
+                <Link to='/tours' className="d-block mt-4"><PrimaryButton>Explore Now</PrimaryButton></Link>
               </div>
             </Col>
             <Col md={6} className="mt-5 mt-md-0">

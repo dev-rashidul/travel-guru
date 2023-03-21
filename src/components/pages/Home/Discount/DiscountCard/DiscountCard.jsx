@@ -7,7 +7,7 @@ import "./DiscountCard.css";
 
 const DiscountCard = ({ discount }) => {
   // Destructring Object
-  const { image, name, location, regular_price, discount_price, rating } =
+  const { _id, image, name, location, regular_price, discount_price, rating } =
     discount;
 
   return (
@@ -16,7 +16,7 @@ const DiscountCard = ({ discount }) => {
         <div className="discount-img position-relative">
           <Image draggable="false" className="w-100" src={image}></Image>
           <div className="view-btn">
-            <Link to="/">
+            <Link to={`/discount/${_id}`}>
               <PrimaryButton>Book Now</PrimaryButton>
             </Link>
           </div>

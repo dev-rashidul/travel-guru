@@ -12,13 +12,12 @@ import {
 import { Helmet } from "react-helmet-async";
 import { FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 import { AuthContext } from "../../../../Context/AuthProvider/AuthProvider";
 import loginImg from "../../../../images/login-img.svg";
 import SpinnerSmall from "../../../Spinners/SpinnerSmall";
 
 const Login = () => {
-  // Checkbox State
-  const [checked, setChecked] = useState(false);
 
   // Error State
   const [error, setError] = useState("");
@@ -31,11 +30,6 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
-
-  // Function for Checkbox
-  const handleChecked = (event) => {
-    setChecked(event.target.checked);
-  };
 
   // Google Login
   const googleProvider = new GoogleAuthProvider();
@@ -66,18 +60,22 @@ const Login = () => {
         console.log(user);
         form.reset();
         setLoading(false);
+        swal("Good job!", "Login Successfully", "success");
         navigate(from, { replace: true });
       })
 
       .catch((error) => {
         console.error(error);
         setError(error.message);
+        swal("Bad Luck!", `${error.message}`, "error");
         setLoading(false);
       });
   };
 
   return (
     <>
+      {/* React Helmet for dynamic Title */}
+
       <Helmet>
         <title> Travel Guru - Login</title>
       </Helmet>
@@ -115,21 +113,12 @@ const Login = () => {
                           required
                         />
                       </FloatingLabel>
-                      <Form.Group controlId="formBasicCheckbox">
-                        <Form.Check
-                          className="mt-4"
-                          onClick={handleChecked}
-                          type="checkbox"
-                          label="Accept Terms and Conditions"
-                        />
-                      </Form.Group>
                       <span className="text-danger text-start m-0">
                         {error}
                       </span>
                       <Button
                         className="submit-btn"
                         type="submit"
-                        disabled={!checked}
                       >
                         {loading ? <SpinnerSmall></SpinnerSmall> : "Login"}
                       </Button>

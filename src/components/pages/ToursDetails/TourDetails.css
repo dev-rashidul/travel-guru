@@ -1,0 +1,19 @@
+.tour-details-wrapper {
+  padding-top: 100px;
+}
+
+.tour-details-img img {
+  width: 100%;
+  min-height: 400px;
+  max-height: 400px;
+  height: 100%;
+}
+
+.tour-details-content h5 {
+  font-size: 20px;
+}
+
+.tour-details-content p svg {
+  color: #fa7436;
+  margin-top: -8px;
+}

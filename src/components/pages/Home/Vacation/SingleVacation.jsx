@@ -7,7 +7,7 @@ import './SingleVacation.css';
 
 const SingleVacation = ({ vacation }) => {
   // Destructure Object
-  const { name, image, price, days, rating } = vacation;
+  const { _id, name, image, price, days, rating } = vacation;
 
   return (
     <Col md="6" lg="4" className="mt-5">
@@ -15,7 +15,7 @@ const SingleVacation = ({ vacation }) => {
         <div className="vacation-img position-relative">
           <Image draggable="false" className="w-100" src={image}></Image>
           <div className="view-btn">
-            <Link to='/'><PrimaryButton>See Details</PrimaryButton></Link>
+            <Link to={`/tour/${_id}`}><PrimaryButton>See Details</PrimaryButton></Link>
           </div>
         </div>
         <div className="vacation-item-content p-4">
